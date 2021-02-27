@@ -1,6 +1,7 @@
 var btnEl = document.querySelector("#start");
 var mainEl = document.querySelector("main");
 var count = 0;
+var score = 0;
 
 const questions = [
   {
@@ -15,7 +16,7 @@ const questions = [
     question: "The condition if/else statement enclosed with ___",
     choiceOne: "quotes",
     choiceTwo: "curly brakets",
-    choiceThree: "patenthesis",
+    choiceThree: "parenthesis",
     choiceFour: "square brakers",
     correctAnswer: "curly brakets"
   },
@@ -49,117 +50,64 @@ const questions = [
 
 function btnHandler() {
 
-  // var question = document.createElement("div");
   mainEl.innerHTML = "";
 
   document.getElementById("testClass").classList.remove("testClass");
-  document.getElementById("test").textContent = questions[count].question;
+  document.getElementById("test").innerHTML = questions[count].question;
   document.getElementById("testButton1").innerHTML = questions[count].choiceOne;
   document.getElementById("testButton2").innerHTML = questions[count].choiceTwo;
   document.getElementById("testButton3").innerHTML = questions[count].choiceThree;
   document.getElementById("testButton4").innerHTML = questions[count].choiceFour;
 
-  // mainEl.appendChild(question);
-  // var heading = document.createElement("h1");
-  // heading.textContent = questions[count].question;
-  // question.appendChild(heading);
-
-  // var answerOne = document.createElement("button");
-  // answerOne.textContent = questions[count].choiceOne;
-  // answerOne.className = "button";
-  // question.appendChild(answerOne);
-
-  // var answerTwo = document.createElement("button");
-  // answerTwo.textContent = questions[count].choiceTwo;
-  // answerTwo.className = "button";
-  // question.appendChild(answerTwo);
-
-  // var answerThree = document.createElement("button");
-  // answerThree.textContent = questions[count].choiceThree;
-  // answerThree.className = "button";
-  // question.appendChild(answerThree);
-
-  // var answerFour = document.createElement("button");
-  // answerFour.textContent = questions[count].choiceFour;
-  // answerFour.className = "button";
-  // question.appendChild(answerFour);
-
-  //console.log(questions[count].question) // question 1
-
   count += 1; //now count == 1;
 
-  //console.log(questions[count].question) // question 2
+  if (count >= questions.length) {
+    document.getElementById("testClass").innerHTML = "";
 
+    document.getElementById("endOfQuiz").classList.remove("endOfQuiz");
+
+    document.getElementById("allDone").innerHTML = "All done!";
+    document.getElementById("finalScore").innerHTML = "Your final score is: " + score;
 };
+}
 
 document.getElementById("testButton1").addEventListener("click", () => {
 
-  if (document.getElementById("testButton1").innerHTML == "booleans") {
-    alert(questions[count - 1].correctAnswer)
-  } else {
-    alert("no")
-  }
 
-  if (document.getElementById("testButton1").innerHTML == questions[count - 1].correctAnswer) {
-    console.log(("testButton1").textContent)
-    alert(document.getElementById("testButton1").innerHTML)
-    return btnHandler()
+  if (document.getElementById("testButton1").innerHTML === questions[count - 1].correctAnswer) {
+    btnHandler()
   } else {
-    console.log("wrong");
-    return btnHandler()
+   btnHandler()
   }
 
 });
 
 document.getElementById("testButton2").addEventListener("click", () => {
   if (document.getElementById(("testButton2").innerHTML === questions[count - 1].correctAnswer)) {
-    console.log(("testButton2").textContent)
     btnHandler()
   } else {
-    console.log("wrong");
     btnHandler()
   }
 });
 
 document.getElementById("testButton3").addEventListener("click", () => {
   if (document.getElementById(("testButton3").innerHTML === questions[count - 1].correctAnswer)) {
-    console.log(("testButton3").textContent)
     btnHandler()
   } else {
-    console.log("wrong");
     btnHandler()
   }
 });
 
 document.getElementById("testButton4").addEventListener("click", () => {
-  if (document.getElementById("testButton4").innerHTML == questions[count - 1].correctAnswer) {
-    console.log("correct")
-  } else {
-
-    console.log("incorrect")
-  }
-
-  btnHandler 
 
   if (document.getElementById(("testButton4").innerHTML === questions[count - 1].correctAnswer)) {
-    console.log(("testButton4").textContent)
     btnHandler()
   } else {
-    console.log("wrong");
     btnHandler()
   }
 });
 
 btnEl.addEventListener("click", btnHandler);
-
-// var taskButtonHandler = function(event) {
-//     console.log(event.target);
-
-//     if (event.target.matches("#button")) {
-//       // get the element's task id
-// console.log("It worked!")
-//     }
-//   };
 
 
 
