@@ -154,11 +154,7 @@ var timer = function() {
   }
 }
 
-// save score
-var saveScore = function() {
-  localStorage.setItem("input", JSON.stringify(input));
-}
-saveScore()
+
 
 
 
