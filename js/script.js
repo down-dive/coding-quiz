@@ -77,9 +77,6 @@ function btnHandler() {
     document.getElementById("allDone").innerHTML = "All done!";
     document.getElementById("finalScore").innerHTML = "Your final score is: " + time;
     document.getElementById("initials").innerHTML = "Enter your initials";
-    // document.getElementById("form").classList.remove("form");
-    // document.getElementsByClassName("form") = ""
-    // document.getElementById("input").innerHTML = "initials";
     var initials = document.createElement("input");
     initials.innerHTML = "initials"
     form.appendChild(initials);
@@ -149,10 +146,7 @@ var timer = function() {
   }
 }
 
-// // input fiels for initials
-// var initials = document.createElement("input");
-// initials.innerHTML = "initials"
-// form.appendChild(initials);
+
 
 
 
