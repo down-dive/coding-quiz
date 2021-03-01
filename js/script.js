@@ -76,10 +76,18 @@ function btnHandler() {
     document.getElementById("endOfQuiz").classList.remove("endOfQuiz");
     document.getElementById("allDone").innerHTML = "All done!";
     document.getElementById("finalScore").innerHTML = "Your final score is: " + time;
-    document.getElementById("initials").innerHTML = "Enter your initials";
+    // document.getElementById("initials").innerHTML = "Enter your initials";
+    var label = document.createElement("label");
+    label.innerHTML = "Enter your initials: ";
+    form.appendChild(label);
     var initials = document.createElement("input");
     initials.innerHTML = "initials"
+    initials.className = "initials"
     form.appendChild(initials);
+    var submit = document.createElement("button");
+    submit.className = "submit"
+    submit.innerHTML = "Submit"
+    form.appendChild(submit);
   };
 }
 // first answer
@@ -145,6 +153,12 @@ var timer = function() {
     clearInterval(startCountDown);
   }
 }
+
+// save score
+var saveScore = function() {
+  localStorage.setItem("input", JSON.stringify(input));
+}
+saveScore()
 
 
 

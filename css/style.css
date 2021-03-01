@@ -26,12 +26,22 @@ main p {
       color: white;
       border-radius: 10px;
       font-size: 25px;
-      /* padding: 15px; */
       margin: 15px;
       width: 250px;
       height: 60px;
 
   }
+
+  .submit {
+    width: 150px;
+    height: 40px;
+  }
+
+  .initials {
+  width: 150px;
+  height: 33px;
+  }
+
 
   div {
     display: flex;
