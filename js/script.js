@@ -1,4 +1,5 @@
 var btnEl = document.querySelector("#start");
+var scoreBtn = document.querySelector("#high-score");
 var mainEl = document.querySelector("main");
 var count = 0;
 var time = 75;
@@ -61,6 +62,34 @@ function btnHandler() {
 
   mainEl.innerHTML = "";
 
+    // final score
+    if (count >= questions.length) {
+      document.getElementById("testClass").innerHTML = "";
+      document.getElementById("endOfQuiz").classList.remove("endOfQuiz");
+      document.getElementById("allDone").innerHTML = "All done!";
+      document.getElementById("finalScore").innerHTML = "Your final score is: " + time;
+      if (localStorage.getItem("High Score")< time ) {
+        localStorage.setItem("High Score", time)
+      }
+
+      // document.getElementById("initials").innerHTML = "Enter your initials";
+      var label = document.createElement("label");
+      label.innerHTML = "Enter your initials: ";
+      form.appendChild(label);
+      var initials = document.createElement("input");
+      initials.className = "initials"
+      form.appendChild(initials);
+      // console.log(document.querySelector("initials").value)
+      // localStorage.setItem("initials", document.querySelector("initials").value)
+      var submit = document.createElement("button");
+      submit.className = "submit"
+      submit.innerHTML = "Submit"
+      form.appendChild(submit);
+
+      document.querySelector(".submit").addEventListener("click", () => {
+        scoreHandler(event)
+      })
+    } else {
   document.getElementById("testClass").classList.remove("testClass");
   document.getElementById("test").innerHTML = questions[count].question;
   document.getElementById("testButton1").innerHTML = questions[count].choiceOne;
@@ -69,30 +98,28 @@ function btnHandler() {
   document.getElementById("testButton4").innerHTML = questions[count].choiceFour;
 
   count += 1; //now count == 1;
-
-  // final score
-  if (count >= questions.length) {
-    document.getElementById("testClass").innerHTML = "";
-    document.getElementById("endOfQuiz").classList.remove("endOfQuiz");
-    document.getElementById("allDone").innerHTML = "All done!";
-    document.getElementById("finalScore").innerHTML = "Your final score is: " + time;
-    // document.getElementById("initials").innerHTML = "Enter your initials";
-    var label = document.createElement("label");
-    label.innerHTML = "Enter your initials: ";
-    form.appendChild(label);
-    var initials = document.createElement("input");
-    initials.innerHTML = "initials"
-    initials.className = "initials"
-    form.appendChild(initials);
-    var submit = document.createElement("button");
-    submit.className = "submit"
-    submit.innerHTML = "Submit"
-    form.appendChild(submit);
-  };
+    }
 }
+
+function scoreHandler(event) {
+  event.preventDefault()
+
+  mainEl.innerHTML = "";
+
+  console.log('document.querySelector(".initials").value')
+      localStorage.setItem("initials", document.querySelector(".initials").value)
+
+  var score = document.createElement("score")
+  score.innerHTML = 'Highest score is:'
+  mainEl.appendChild(score);
+}
+
+
+
 // first answer
 document.getElementById("testButton1").addEventListener("click", () => {
-  if (document.getElementById("testButton1").innerText == questions[count - 1].correctAnswer) {
+  
+  if (document.getElementById("testButton1").innerText  == questions[count - 1].correctAnswer) {
     console.log(questions[count - 1].correctAnswer)
      time += 5;
     btnHandler()
@@ -104,7 +131,7 @@ document.getElementById("testButton1").addEventListener("click", () => {
 
 // second answer
 document.getElementById("testButton2").addEventListener("click", () => {
-  if (document.getElementById(("testButton2").innerText == questions[count - 1].correctAnswer)) {
+  if (document.getElementById("testButton2").innerText  == questions[count - 1].correctAnswer) {
      time += 5;
     btnHandler()
   } else {
@@ -115,7 +142,7 @@ document.getElementById("testButton2").addEventListener("click", () => {
 
 // third answer
 document.getElementById("testButton3").addEventListener("click", () => {
-  if (document.getElementById(("testButton3").innerText == questions[count - 1].correctAnswer)) {
+  if (document.getElementById("testButton3").innerText  == questions[count - 1].correctAnswer) {
      time += 5;
     btnHandler()
   } else {
@@ -126,7 +153,9 @@ document.getElementById("testButton3").addEventListener("click", () => {
 
 // forth answer
 document.getElementById("testButton4").addEventListener("click", () => {
-  if (document.getElementById(("testButton4").innerText == questions[count - 1].correctAnswer)) {
+  console.log(questions[count - 1].correctAnswer)
+  console.log(document.getElementById("testButton4").innerText )
+  if (document.getElementById("testButton4").innerText == questions[count - 1].correctAnswer) {
      time += 5;
     btnHandler()
   } else {
@@ -146,6 +175,10 @@ btnEl.addEventListener("click", function(){
 
 });
 
+scoreBtn.addEventListener("click", function(){
+  console.log("clicked")
+})
+
 // stop timer
 var timer = function() {
   timeEl.innerText = time;
@@ -154,7 +187,9 @@ var timer = function() {
   }
 }
 
-
+if(localStorage.getItem("High Score") == null){
+  localStorage.setItem("High Score", 0)
+}
 
 
 
