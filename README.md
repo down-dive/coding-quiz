@@ -33,7 +33,6 @@ As a coding boot camp student, I WANT to take a timed quiz on JavaScript fundame
 https://down-dive.github.io/coding-quiz/
 
 ## Screenshot
-The following animation demonstrates the application functionality:
 
 ![alt="code quiz"](./assets/images/coding-quiz.jpn)
 
