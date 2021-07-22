@@ -13,8 +13,6 @@ Practice with DOM elements, setTimer() elements and much more
 4. Once the quiz in over user presents a page to enter their initials
 
 ## Coming features and bug fixes:
-- Once user hits the correct answer timer countdown will increase by 5 seconds
-- After entering users initials, it saves in localStorage 
 - Score and users initials are saved and user is able to see highest scores on a new page after entering their initials
 - High score view is also available by following the link on the top left corner
 - more design and style is added for more cleanines view of the page
